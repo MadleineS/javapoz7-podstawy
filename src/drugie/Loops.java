@@ -49,7 +49,7 @@ for (int i=0; i <n; i++) {
             System.out.println(i * i);
         }
 
-        //5 oblicz kolejne 
+        //5 oblicz kolejne
         /*
         int a = scanner.nextInt();
         int b = scanner.nextInt();
