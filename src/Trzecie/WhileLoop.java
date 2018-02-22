@@ -5,7 +5,126 @@ import java.util.Scanner;
 public class WhileLoop {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        //podajemy liczby tak dlugo az nie zostanie podane 0. wpisujemy najwieksza liczbe sprawdzanie ilosci cyfr
+
+
+       int value = 1;
+        int maxValue = 0;
+        while (value != 0) {
+            value = scanner.nextInt();
+            if (value > maxValue) {
+                maxValue = value;
+            }
+            System.out.println("MaxValue = " + maxValue);
+        }
+
+        //sprawdzanie ilosci cyfr podanej liczby
+
+        System.out.println();
+        System.out.println("Zadanie nr 2");
+        int n = 1234567;
+        int numberOfDigits = 0;
+        if (n == 0) {
+            numberOfDigits++;
+        }
+        while (n != 0) {
+            numberOfDigits++;
+            //n = n /10; to samo co nizej
+            n /= 10;
+        }
+        System.out.println("Number of digits = " + numberOfDigits);
+
+        //suma cyfr liczby
+
+        System.out.println();
+        System.out.println("Zadanie nr 3 suma liczb");
+
+        int number = scanner.nextInt();
+        int sum = 0;
+        while (number !=0) {
+             sum += number % 10;
+            number /=10;
+        }
+        System.out.println("Sum of digits =" + sum);
+
+        //program liczacy ilosc pdanej cyfry w liczbie
+
+        System.out.println();
+        System.out.println("zadanie nr 4 program liczacy ilosc podanej cyfry w liczbie");
+
+        int anotherNumber = 232;
+        System.out.println("Insert number");
+        int searchForNumber = 2;
+        int counter = 0;
+        while (anotherNumber !=0){
+            int nextNumber = anotherNumber % 10;
+            if (nextNumber == anotherNumber) {
+                counter++;
+            }
+           anotherNumber /=10;
+        }
+        System.out.println("Found" + counter + "numbers" + 2);
+
+        //wypisac dzielnik liczby
+        System.out.println();
+        System.out.println(" Zadanie nr 5 wypisac dzielnik liczby");
+
+       int numberToGetDividers = 8; //scanner.nextInt();
+        for (int i = 1; i <= numberToGetDividers /2; i++ ) {
+            if (numberToGetDividers % i == 0) {
+                System.out.println(" Dividers:" + i);
+            }
+        }
+        System.out.println("For number:" + numberToGetDividers);
+
+        System.out.println();
+        System.out.println("Zadanie nr 6 sprawdzic czy liczba jest pierwsza");
+        //sprawdzic czy liczba jest pierwsza
+
+        int primaryNumberCandidate = scanner.nextInt();
+        int i = 2;
+        boolean isPrimary = true;
+        while (isPrimary && i <= primaryNumberCandidate / 2){
+            if (primaryNumberCandidate % i == 0) {
+                isPrimary = false;
+            }
+            i++;
+        }
+        if (isPrimary) {
+            System.out.println("Number is primary");
+        } else {
+            System.out.println("Number is not primary");
+        }
+
+
+        //menu
+        int option = 1;
+        while (option !=0);
+        {
+            System.out.println("1. New");
+            System.out.println("2.Load");
+            System.out.println("3.About");
+            System.out.println("0. Quit");
+            option = scanner.nextInt();
+            System.out.println();
+            System.out.println();
+
+        }
+
+        //wyliczyc srednia podanych liczb
+                //"dupochron" - parzyste większe od 10
+
+        //binarna reprezentacja liczby
+
+
+
+
+
         // wczytujemy liczby tak dlugo, az nie bedzie ona podzielna przez 15
+        whileLoopExercises(scanner);
+    }
+
+    private static void whileLoopExercises(Scanner scanner) {
         int number = 1;
         while(number % 15 != 0) {
             number = scanner.nextInt();
