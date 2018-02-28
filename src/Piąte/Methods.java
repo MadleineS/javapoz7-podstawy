@@ -1,30 +1,101 @@
 package Piąte;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
+import static jdk.nashorn.internal.objects.NativeMath.max;
+
 public class Methods {
     public static void main(String[] args) {
         int[] array = {1,2,3,4,5,6,7,8};
 
        printArray(array);
-       sumOfArray(array);
+       int sum = sumOfArray(array);
+       double avg = avg(array);
 
-        int [] newArray = new int[5];
-        for (int i = 0; i < newArray.length; i++) {
-            newArray[i] = 1;
+        System.out.println("Sum =" + sumOfArray(array));
+        System.out.println("Avg =" + avg (array));
+        System.out.println("Min =" + min(array));
+        System.out.println("Max=" + max(array));
+        System.out.println("Spread=" + spread(array));
+        printArray(statsOfOccurences(array));
+        System.out.println("Moda=" + moda(array));
+        printArray(sortByCounting(array));
+
+    }
+    public static int[] sortByCounting(int[] array) {
+        int[] sortedArray = new int[array.length];
+        int[] stats = statsOfOccurences(array);
+        int k =0;
+        for (int i = 0; i < stats.length; i++) {
+            for (int j = 0; j < stats[i]; j++) {
+                sortedArray[k] = i + min(array);
+                k++;
+            }
         }
-        printArray(newArray);
-        sumOfArray(newArray);
+        return  sortedArray;
     }
 
-    public static void avg(int[] array) {
-        
+    public static int[] statsOfOccurences(int[] array) {
+        int[] statsArray = new int[spread(array)];
+        int min = min(array);
+        for (int i =0; i < array.length; i++) {
+            statsArray[array[i] - min]++;
+        }
+        return statsArray;
     }
+    public static int spread(int[] array){
+        return (int) (max(array) - min(array) +1);
+    }
+
+    public static int min (int[] array) {
+    int max = array[0];
+    for (int i =1; i <array.length; i++) {
+        if (max< array[i]) {
+            max = array[i];
+        }
+    }
+    return max;
+    }
+
+    //Statystyki
+
+    //napisac metode ktora zwraca wartosc najmniejszego elementu z tablicy
+    //napisac metode ktora zwraca wartosc nawiekszego elementu z tablicy
+    //mediana
+    public static int indexOfMax(int[] array) {
+        int iMax = 0;
+        for (int i = 0; i < array.length; i++) {
+            if ( array[i] > array[iMax]) {
+                iMax = i;
+            }
+        }
+        return iMax;
+    }
+
+    public static int moda(int [] array) {
+        int[] stats = statsOfOccurences(array);
+        int indexofMaximuValue = indexOfMax(stats);
+        return indexofMaximuValue + min(array);
+    }
+    //rozpietosc
+    //informacje o wystapieniu liczb
+    //*na podstawie poprzedniej metody wypisac posortowana tabblice
+
+    public static double avg(int[] array) {
+        int sum = sumOfArray(array);
+        return (double) sum / array.length;
+
+        }
+
+
            //napisać funkcję ktora przyjmuje tablice liczb i wypisuje ich sume
-    public static void  sumOfArray (int[] array) {
+    public static int  sumOfArray (int[] array) {
         int sum = 0;
         for (int i=0; i < array.length; i++) {
             sum +=array[i];
         }
-        System.out.println(sum);
+        return sum;
+
     }
 
 
