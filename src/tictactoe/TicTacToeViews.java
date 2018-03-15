@@ -31,4 +31,8 @@ public class TicTacToeViews {
         }
 
     }
+
+    public static void loserEndGame(char currentSign) {
+        System.out.println("And the loser is " + currentSign);
+    }
 }
